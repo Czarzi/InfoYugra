@@ -1,0 +1,23 @@
+<!-- <div class="container">
+    <ul class="nav nav-tabs">
+        <li class="nav-link" routerLinkActive="routerLinkActive">
+            <a routerLink="/user-Chart">Show Statistics</a>
+        </li>
+    </ul>
+</div> -->
+<div class="display">
+    <table class="table">
+        <tr>
+            <th>Дата\Время</th>
+            <th>№ личного счета</th>
+            <th>Тип транзакции</th>
+            <th>Сумма</th>
+        </tr>
+        <tr *ngFor="let item of data">
+            <td>{{ item.id }}</td>
+            <td>{{ item.account_number }}</td>
+            <td>{{ item.type_payment }}</td>
+            <td>{{ item.value }}</td>
+        </tr>
+    </table>
+</div>
