@@ -1,7 +1,7 @@
 <div>
   <header>
-    <div>
-        <h1>Angular Info Ugra <br/> JWT Auth</h1>
+    <div class="header-min">
+        <h1>Personal Cabinet <br /> <br>Info Ugra</h1>
     </div>
     <div class="image"></div>
   </header>
@@ -9,11 +9,11 @@
 
   <form (ngSubmit)="login(loginForm.value)" [formGroup]="loginForm">
     
-    <h2>Login</h2>
-    <label for="email">Email:</label>
+    <h1>Login</h1>
+    <label for="email"><h2>Email:</h2></label>
     <input type="email" name="email" formControlName="email">
   
-    <label for="password">Password:</label>
+    <label for="password"><h2>Password:</h2></label>
     <input type="password" name="password" formControlName="password">
   
     <input type="submit" [disabled]="!loginForm.valid" value="Submit">
