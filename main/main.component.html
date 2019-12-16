@@ -31,7 +31,7 @@
         <tbody>
             <tr *ngFor="let item of data">
                 <td><h5>{{ item.date_created | date: 'dd MMMM yyyy, HH:mm'}}</h5></td>
-                <td><h5>{{ item.account_payment.account_number }}</h5></td>
+                <td><h5>{{ item.account_number.account_number }}</h5></td>
                 <td><h5>{{ item.type_payment }}</h5></td>
                 <td><h5>{{ item.value }}</h5></td>
             </tr>

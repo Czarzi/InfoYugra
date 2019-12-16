@@ -43,17 +43,8 @@ export class MainComponent implements OnInit {
             .subscribe(data => {
                 console.log("data: ", data);
                 var invalidEntries = 0;
-                function isNumber(data){
-                    return data !== undefined && data !==null && !isNaN(data)
-                };
-                function filterByID(data) {
-                    if (isNumber(this.data.account_payment.account_number) && this.data.account_payment.account_number !== 0) {
-                        return true;
-                    }
-                    return false;
-                }
                 this.data = data;
-                this.data.filter(filterByID);
+                this.data = this.data.filter(this.filterByID);
                 // for(let i=0; i < this.data.account_payment.account_number; i++){
                 //     if(!this.data.account_payment.account_number) {
                 //         return "Отсутствует";
@@ -65,5 +56,14 @@ export class MainComponent implements OnInit {
                     this.collection.push(data);
                 }
             });
+    }
+    isNumber(data){
+        return this.data !== undefined && this.data !==null && !isNaN(this.data)
+    }
+    filterByID() {
+        if (this.isNumber(this.data.account_payment.account_number) && this.data.account_payment.account_number !== 0) {
+            return true;
+        }
+        return false;
     }
 }
