@@ -3,11 +3,11 @@
         <div class="sidebar">
             <h2>Info Ugra</h2>
             <ul>
-                <li><a href="#"><h5><i class="fas fa-home"></i>Home</h5></a></li>
-                <li><a href="#"><h5><i class="fas fa-user"></i>Profile</h5></a></li>
-                <li><a href="#"><h5><i class="fas fa-address-card"></i>About</h5></a></li>
-                <li><a href="#"><h5><i class="fas fa-address-book"></i>Contact</h5></a></li>
-                <li><a href="#" active><h5><i class="fas fa-coins"></i>Bonus</h5></a></li>
+                <li><a href="#"><h5><i class="fas fa-home" style="margin-right: 10px;"></i>Home</h5></a></li>
+                <li><a href="#"><h5><i class="fas fa-user" style="margin-right: 10px;"></i>Profile</h5></a></li>
+                <li><a href="#"><h5><i class="fas fa-address-card" style="margin-right: 10px;"></i>About</h5></a></li>
+                <li><a href="#"><h5><i class="fas fa-address-book" style="margin-right: 10px;"></i>Contact</h5></a></li>
+                <li><a href="#" active><h5><i class="fas fa-coins" style="margin-right: 10px;"></i>Bonus</h5></a></li>
             </ul> 
             <div class="social_media">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -18,22 +18,38 @@
     </div>
 </div>
 <div class="display">
-    
+    <div class="bonus-info">
+        <a (click)="calcBonus()">У вас {{ bonus }} бонусов</a>
+    </div>
     <table class="content-table">
         <thead>
             <tr>
                 <th><h5>Date\Time</h5></th>
                 <th><h5>Account Number</h5></th>
-                <th><h5>Type payment</h5></th>
+                <!-- <th><h5>Type payment</h5></th> -->
                 <th><h5>Value</h5></th>
+                <th><h5>Details</h5></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of data">
                 <td><h5>{{ item.date_created | date: 'dd MMMM yyyy, HH:mm'}}</h5></td>
-                <td><h5>{{ item.account_number.account_number }}</h5></td>
-                <td><h5>{{ item.type_payment }}</h5></td>
+                <td><h5>{{ item.account_payment.account_number }}</h5></td>   
+                <!-- <td><h5>{{ item.type_payment }}</h5></td> -->
                 <td><h5>{{ item.value }}</h5></td>
+                <div class="poster">
+                    <!--<a class="details-a">/a>-->
+                    <button class="btn-details" (click)="onClickDetails()">Details</button>
+                    <div class="descr" id="detailsBlock">
+                        <th><h5>Organisation</h5></th>
+                        <th><h5>Services</h5></th>
+                        <tr *ngFor="let obj of item.account_payment.account_payment_services">
+                            <td><h5>{{obj.supplier_name}}</h5></td>
+                            <td><h5>{{obj.service_name}}</h5></td>
+                        </tr>
+                    </div>
+                </div>
+                <!-- <jw-pagination [data]="item" (changePage)="onChangePage($event)"></jw-pagination> -->
             </tr>
         </tbody>
     </table>

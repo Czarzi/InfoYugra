@@ -20,7 +20,8 @@ export interface jsonTables {
 })
 export class MainComponent implements OnInit {
     data: any;
-    collection = [];
+    items = [];
+    pageOfItems: Array<any>;
     
     constructor(
         private httpClient: HttpClient,
@@ -44,26 +45,27 @@ export class MainComponent implements OnInit {
                 console.log("data: ", data);
                 var invalidEntries = 0;
                 this.data = data;
-                this.data = this.data.filter(this.filterByID);
-                // for(let i=0; i < this.data.account_payment.account_number; i++){
-                //     if(!this.data.account_payment.account_number) {
-                //         return "Отсутствует";
-                //     }else{
-                //         return this.data.account_payment.account_number;
-                //     }
-                // }
-                for(let i=1;i<=10;i++){
-                    this.collection.push(data);
-                }
+                console.log("Проверка: ", this.data);
+                this.data = this.data.filter(acc => acc.account_payment && acc.account_payment.account_number);
             });
+        // this.data = Array(150).fill(0).map((x, i) => ({ id: (i + 1), name: `Item ${i + 1}`}));
     }
-    isNumber(data){
-        return this.data !== undefined && this.data !==null && !isNaN(this.data)
-    }
-    filterByID() {
-        if (this.isNumber(this.data.account_payment.account_number) && this.data.account_payment.account_number !== 0) {
-            return true;
+    onClickDetails() {
+        var details = document.getElementById("detailsBlock");
+        if (details.style.display === "none"){
+            details.style.display = "block";
+        } else {
+            details.style.display = "none";
         }
-        return false;
+    }
+    onChangePage(pageOfItems: Array<any>) {
+        // update current page of items
+        this.pageOfItems = this.data;
+    }
+    calcBonus() {
+        var bonus = this.data.value;
+        bonus = bonus.reduce(function (previousValue, value){
+            return previousValue + value;
+        });
     }
 }
