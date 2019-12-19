@@ -19,7 +19,7 @@
 </div>
 <div class="display">
     <div class="bonus-info">
-        <a (click)="calcBonus()">У вас {{ bonus }} бонусов</a>
+        <!-- <a (click)="calcBonus()">У вас {{ bonus }} бонусов</a> -->
     </div>
     <table class="content-table">
         <thead>
@@ -32,7 +32,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of data">
+            <tr *ngFor="let item of data;">
                 <td><h5>{{ item.date_created | date: 'dd MMMM yyyy, HH:mm'}}</h5></td>
                 <td><h5>{{ item.account_payment.account_number }}</h5></td>   
                 <!-- <td><h5>{{ item.type_payment }}</h5></td> -->

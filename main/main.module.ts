@@ -3,7 +3,7 @@ import { CommonModule} from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
-import { NgxPaginationModule } from 'ngx-pagination';
+// import { JwPaginationComponent } from 'jw-angular-pagination';
 
 @NgModule({
   imports: [
@@ -11,7 +11,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
       MainRoutingModule,
       FormsModule,
       ReactiveFormsModule,
-      NgxPaginationModule
+      // JwPaginationComponent
   ],
   declarations: [MainComponent]
 })

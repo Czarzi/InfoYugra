@@ -1,6 +1,6 @@
 import { Component, OnInit, NgModule, LOCALE_ID } from '@angular/core';
 import {FormGroup, FormControl, Validators } from "@angular/forms";
-import { NgxPaginationModule } from 'ngx-pagination';
+// import { NgxPaginationModule } from 'ngx-pagination';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { AuthService } from '../auth.service';
 import { isNgTemplate } from '@angular/compiler';
@@ -20,7 +20,7 @@ export interface jsonTables {
 })
 export class MainComponent implements OnInit {
     data: any;
-    items = [];
+    items: any;
     pageOfItems: Array<any>;
     
     constructor(
@@ -47,6 +47,7 @@ export class MainComponent implements OnInit {
                 this.data = data;
                 console.log("Проверка: ", this.data);
                 this.data = this.data.filter(acc => acc.account_payment && acc.account_payment.account_number);
+                this.items = data;
             });
         // this.data = Array(150).fill(0).map((x, i) => ({ id: (i + 1), name: `Item ${i + 1}`}));
     }
@@ -60,7 +61,7 @@ export class MainComponent implements OnInit {
     }
     onChangePage(pageOfItems: Array<any>) {
         // update current page of items
-        this.pageOfItems = this.data;
+        this.pageOfItems = pageOfItems;
     }
     calcBonus() {
         var bonus = this.data.value;
