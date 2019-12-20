@@ -5,6 +5,8 @@ import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { JwPaginationComponent } from 'jw-angular-pagination';
+import {MatPaginatorModule} from '@angular/material/paginator';
+// import CanvasJS from 'canvasjs';
 
 //JWT module
 import { JwtModule } from '@auth0/angular-jwt';
@@ -18,6 +20,8 @@ registerLocaleData(localeRu);
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import { RouterModule } from '@angular/router';
     }),
     AppRoutingModule,
     RouterModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule,
+    ChartsModule
+    // CanvasJS
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ru' }
