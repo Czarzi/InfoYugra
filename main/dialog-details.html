@@ -1,0 +1,20 @@
+<h5>Дополнительная информация о бонусах</h5>
+
+<div class="poster" *ngFor="let i = index;">
+    <table id="detailsBlock{{i}}">
+        <thead>
+            <th><h5>Поставщик:</h5></th>
+            <th><h5>Услуга:</h5></th>
+            <th><h5>Число оплаченных пени с помощью бонусов:</h5></th>
+            <th><h5>Число бонусов за оплату услуги:</h5></th>
+        </thead>
+        <tbody *ngFor="let item of data">
+            <tr *ngFor="let obj of item.account_payment.account_payment_services">
+                <td><h5>{{obj.supplier_name}}</h5></td>
+                <td><h5>{{obj.service_name}}</h5></td>
+                <td><h5>{{obj.fine_sum}}</h5></td>
+                <td><h5>{{obj.main_sum}}</h5></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

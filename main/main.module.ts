@@ -4,9 +4,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
-// import CanvasJS from 'canvasjs';
 import { ChartsModule } from 'ng2-charts';
-// import { JwPaginationComponent } from 'jw-angular-pagination';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogContentExampleDialog } from './main.component';
 
 @NgModule({
   imports: [
@@ -15,10 +17,11 @@ import { ChartsModule } from 'ng2-charts';
       FormsModule,
       ReactiveFormsModule,
       MatPaginatorModule,
-      ChartsModule
-      // CanvasJS
-      // JwPaginationComponent
+      ChartsModule,
+      MatButtonModule,
+      MatDialogModule
   ],
-  declarations: [MainComponent]
+  declarations: [MainComponent,DialogContentExampleDialog],
+  entryComponents: [DialogContentExampleDialog]
 })
 export class MainModule { }
